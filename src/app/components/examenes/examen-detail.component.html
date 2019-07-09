@@ -1,0 +1,24 @@
+<div *ngIf="!examen_actual">
+    <p>Cargando examen...</p>
+</div>
+<div class="row" *ngIf="examen_actual">
+    <div class="col-lg-8">
+        <h1>Detalles del examen</h1>
+        <ul class="list-group">
+            <li class="list-group-item"><strong>Fecha: </strong>{{examen_actual.fecha}}</li>
+            <li class="list-group-item"><strong>Aciertos: </strong>{{examen_actual.aciertos}}</li>
+            <li class="list-group-item"><strong>Fallos: </strong>{{examen_actual.fallos}}</li>
+            <li class="list-group-item"><strong>Nota: </strong>{{examen_actual.aciertos / (examen_actual.aciertos+examen_actual.fallos)*100 | number}}  %</li>
+        </ul>
+    
+        <h2>Resumen de respuestas</h2>
+        <ul class="list-group">
+            <li *ngFor="let item of examen_actual.preguntas;" class="list-group-item" [ngClass]="{'list-group-item-success': item.acierto, 'list-group-item-danger': !item.acierto }">
+                <strong>{{item.termino.termino}}</strong> - {{item.termino.definicion}}
+            </li>
+        </ul>
+    </div>
+    <div class="col-lg-6 btn-group">
+        <button type="button"  [routerLink]="['/examenes']" class="btn btn-primary">Volver</button>
+    </div>
+</div>

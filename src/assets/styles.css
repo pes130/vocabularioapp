@@ -1,0 +1,37 @@
+body {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.navbar {
+  margin-bottom: 20px;
+}
+
+
+#form-login {
+    max-width: 330px;
+    margin: 0 auto;
+}
+
+.red {color: red}
+.green {color: green}
+
+.sobresaliente {
+  color: #239B56
+}
+.notable {
+  color: #58D68D
+}
+.suficiente {
+  color: rgb(199, 123, 10)
+}
+.regular {
+  color: rgb(253, 99, 9)
+}
+.mal {
+  color: #C0392B;
+}
+
+.center {
+  text-align: center;
+}

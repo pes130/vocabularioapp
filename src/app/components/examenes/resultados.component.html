@@ -1,0 +1,41 @@
+<h1>{{titulo}}</h1>
+<hr/>
+<div class="table-responsive col-lg-8">  
+  <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+
+
+    <ng-container matColumnDef="termino">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Término </th>
+      <td mat-cell *matCellDef="let element"> <strong>{{element.termino}}</strong></td>
+    </ng-container>
+
+    <ng-container matColumnDef="aciertos">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Aciertos </th>
+      <td mat-cell *matCellDef="let element"> {{element.aciertos}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="fallos">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Fallos </th>
+      <td mat-cell *matCellDef="let element"> {{element.fallos}} </td>
+    </ng-container> 
+
+    <ng-container matColumnDef="total">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> % Aciertos </th>
+      <td mat-cell *matCellDef="let element" class="center" > 
+        <span [ngClass]="{'sobresaliente': element.total == 100,'notable': element.total >= 70 && element.total<=90,'suficiente': element.total >= 50 && element.total<70,'regular': element.total >= 35 && element.total<50,'mal':element.total<35}">
+          <strong>{{element.total}} %</strong>
+        </span>
+      </td>
+    </ng-container> 
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <mat-paginator #paginator
+        [length]="listaResultados.length"
+        [pageIndex]="0"
+        [pageSize]="10"
+        [pageSizeOptions]="[10, 25, 100]"
+        [showFirstLastButtons]="true">
+    </mat-paginator>
+</div>

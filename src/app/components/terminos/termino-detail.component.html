@@ -1,0 +1,19 @@
+<div *ngIf="!termino_actual">
+    <p>Cargando término...</p>
+</div>
+<div class="row" *ngIf="termino_actual">
+    <div class="col-lg-8">
+        <h1>{{termino_actual.termino}}</h1>
+        <ul class="list-group">
+            <li class="list-group-item"><strong>Término: </strong>{{termino_actual.termino}}</li>
+            <li class="list-group-item"><strong>Definición: </strong>{{termino_actual.definicion}}</li>
+            <li class="list-group-item"><strong>Ejemplo: </strong>{{termino_actual.ejemplo}}</li>
+            <li class="list-group-item"><strong>Tipo: </strong>{{termino_actual.tipo}}</li>
+        </ul>
+    </div>
+    <div class="col-lg-6 btn-group">
+        <button type="button"  [routerLink]="['/terminos']" class="btn btn-primary">Volver</button>
+        <button type="button"  [routerLink]="['/termino',termino_actual.id,'edit']" class="btn btn-success">Editar</button>
+        <button type="button"  [routerLink]="['/termino',termino_actual.id,'delete']" class="btn btn-danger">Borrar</button>
+    </div>
+</div>

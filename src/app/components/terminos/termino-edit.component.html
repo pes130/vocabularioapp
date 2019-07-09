@@ -1,0 +1,38 @@
+<h1>{{termino_actual.termino}}</h1>
+<hr/>
+
+<form  #formTermino="ngForm" (ngSubmit)="onSubmit()" id="form-termino">
+    
+    <label>
+        Término
+        <span *ngIf="!termino.valid && termino.touched" class="label label-danger">El término es obligatorio</span>
+    </label>
+    <input type="text" #termino="ngModel" name="termino" [(ngModel)]="termino_actual.termino" 
+        class="form-control" required/>
+
+    <label>
+        Definición
+        <span *ngIf="!definicion.valid && definicion.touched" class="label label-danger">La definición es obligatoria</span>
+    </label>
+    <input type="text" #definicion="ngModel" name="definicion" [(ngModel)]="termino_actual.definicion" 
+        class="form-control" required/>
+
+    <label>
+        Ejemplo
+    </label>
+    <textarea #ejemplo="ngModel" name="ejemplo" [(ngModel)]="termino_actual.ejemplo" 
+        class="form-control"></textarea>
+
+    <label>
+        Tipo
+    </label>
+    <input type="text" #tipo="ngModel" name="tipo" [(ngModel)]="termino_actual.tipo" 
+        class="form-control"/>
+    <br/>
+    <div class="btn-group">
+        <input type="submit" value="Guardar" [disabled]="!formTermino.form.valid" class="btn btn-success"/>
+        <input type="reset" value="Limpiar" class="btn btn-danger"/>
+        <input type="button" [routerLink]="['/termino',termino_actual.id]" value="Volver" class="btn btn-primary"/>
+    </div>
+   
+</form>

@@ -1,0 +1,38 @@
+<h1>{{titulo}}</h1>
+<div class="table-responsive">  
+  <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+
+
+    <ng-container matColumnDef="fecha">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Fecha </th>
+      <td mat-cell *matCellDef="let element"> {{element.fecha}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="aciertos">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Aciertos </th>
+      <td mat-cell *matCellDef="let element"> {{element.aciertos}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="fallos">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Fallos </th>
+      <td mat-cell *matCellDef="let element"> {{element.fallos}} </td>
+    </ng-container> 
+
+    <ng-container matColumnDef="acciones">
+        <th mat-header-cell *matHeaderCellDef> Acciones </th>
+        <td mat-cell *matCellDef="let element">
+            <button md-raised-button class="btn btn-sm btn btn-link" [routerLink]="['/examen/', element.id]">Ver</button>
+        </td>
+      </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <mat-paginator #paginator
+        [length]="listaExamenes.length"
+        [pageIndex]="0"
+        [pageSize]="10"
+        [pageSizeOptions]="[10, 25, 100]"
+        [showFirstLastButtons]="true">
+    </mat-paginator>
+</div>
