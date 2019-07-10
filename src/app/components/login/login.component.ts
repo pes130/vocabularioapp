@@ -9,9 +9,9 @@ import { User } from '../../models/user';
   templateUrl: './login.component.html'
 })
 export class LoginComponent {
-  private loading: boolean = false;
-  private submitted: boolean = false;
-  private user: User = new User();
+  loading: boolean = false;
+  submitted: boolean = false;
+  user: User = new User();
 
   constructor(
     private _router: Router,

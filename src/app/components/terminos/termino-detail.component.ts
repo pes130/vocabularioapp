@@ -10,7 +10,7 @@ import { Termino } from '../../models/termino';
     providers: [TerminosService]
 })
 export class TerminoDetailComponent implements OnInit {
-    private termino_actual: Termino;
+    termino_actual: Termino;
 
     constructor(
         private _terminosService:TerminosService,

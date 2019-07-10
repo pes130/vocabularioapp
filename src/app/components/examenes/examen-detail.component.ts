@@ -15,7 +15,7 @@ import { Examen } from '../../models/examen';
     ]
 })
 export class ExamenDetailComponent implements OnInit {
-    private examen_actual: Examen;
+    examen_actual: Examen;
 
     constructor(
         private _terminos_service:TerminosService,

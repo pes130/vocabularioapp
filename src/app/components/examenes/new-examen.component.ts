@@ -13,9 +13,9 @@ import { Router } from '@angular/router';
   })
   export class NewExamenComponent implements OnInit {
     currentUser: string;
-    private titulo:string;
-    private termsMap:Map<number, Termino>;
-    private examen:Examen;
+    titulo:string;
+    termsMap:Map<number, Termino>;
+    examen:Examen;
   
     constructor(
         private _terminos_service:TerminosService,

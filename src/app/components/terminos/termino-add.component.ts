@@ -11,8 +11,8 @@ import { AlertService } from '../../services/alert.service';
     providers: [TerminosService]
 })
 export class TerminoAddComponent {
-    private titulo: string;
-    private termino_actual: Termino;
+    titulo: string;
+    termino_actual: Termino;
 
     constructor(
         private _terminosService:TerminosService,

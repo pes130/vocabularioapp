@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
 })
 export class HomeComponent  {
   currentUser: string;
-  private titulo:string;;
+  titulo:string;;
 
   constructor() { 
     this.currentUser = localStorage.getItem('user');
