@@ -1,7 +1,7 @@
 export class User {
 
     username: string;
-    private password: string;
+    password: string;
    
     constructor(
         username?: string,
