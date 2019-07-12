@@ -18,8 +18,6 @@ export class AlertComponent implements OnInit, OnDestroy {
     console.log("Cargando componente de alertas");
     this.subscription = this._alert_service.getAlert()
             .subscribe(message => {
-              console.log("Recibo algo de alert service");
-              console.log(message);
                 switch (message && message.type) {
                     case 'success':
                         message.cssClass = 'alert alert-success';

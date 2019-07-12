@@ -20,12 +20,10 @@ export class LoginComponent {
   ) { }
 
   onSubmit(): void {
-    console.log("Vamos a hacer login");
     this.loading = true;
     this.submitted = true;
     this._auth_service.login(this.user)
     .then((result) => {
-      console.log(result);
 
       localStorage.setItem('user', this.user.username);
       localStorage.setItem('access_token', result.access_token);
@@ -38,6 +36,8 @@ export class LoginComponent {
     })
     .catch((err) => {
       this._alert_service.error("Problemas con la autenticación ...");
+      this.loading = false;
+      this.submitted = false;
     });
   }
 
