@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { MaterialModule} from "./material.module";
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -28,6 +28,7 @@ import { ExamenesListComponent } from './components/examenes/examenes-list.compo
 import { ExamenDetailComponent } from './components/examenes/examen-detail.component';
 import { ResultadosComponent } from './components/examenes/resultados.component';
 import { ErrorComponent } from './components/error/error.component';
+import { HttpErrorInterceptor } from './_helpers/http.error.interceptor';
 
 @NgModule({
   declarations: [
@@ -59,7 +60,12 @@ import { ErrorComponent } from './components/error/error.component';
     AuthGuard,
     LoginRedirectGuard,
     TerminosService,
-    ExamenesService
+    ExamenesService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpErrorInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

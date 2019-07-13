@@ -31,6 +31,8 @@ export class ExamenesService {
     let params = json;
     const access_token = localStorage.getItem('access_token');
     let headers:HttpHeaders = new HttpHeaders({'Content-type':'application/json', Authorization: `Bearer ${access_token}`});
+    console.log("ACCESS_TOKEN="+access_token);
+    
     return this._http.post(this.url+'/exam2', params, {headers}); 
   }
 

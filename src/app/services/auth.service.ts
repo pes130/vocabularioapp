@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from '../models/user';
 import { GLOBAL } from './global'
+import { Observable } from 'rxjs';
 
 
 @Injectable({
@@ -25,11 +26,11 @@ export class AuthService {
         return this._http.post(url, user, {headers: this.headers}).toPromise();
     } */
 
-    refresh_token(): Promise<any> {
+    refresh_token(): Observable<any> {
         let url: string = `${this.BASE_URL}/refresh`;
         const refresh_token = localStorage.getItem('refresh_token');
         let headers: HttpHeaders = new HttpHeaders({Authorization: `Bearer ${refresh_token}`});
-        return this._http.post(url, null, {headers: headers}).toPromise();
+        return this._http.post(url, null, {headers: headers});
     }
 
     logout(): Promise<any> {
