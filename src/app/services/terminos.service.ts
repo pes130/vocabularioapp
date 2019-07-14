@@ -20,6 +20,18 @@ export class TerminosService {
     return this._http.get(this.url+'/terms',{headers: headers});
   }
 
+  getTipos(): Observable<any> {
+    const access_token = localStorage.getItem('access_token');
+    let headers: HttpHeaders = new HttpHeaders({Authorization: `Bearer ${access_token}`});
+    return this._http.get(this.url+'/types',{headers: headers});
+  }
+
+  getTerminosByTipo(tipo): Observable<any> {
+    const access_token = localStorage.getItem('access_token');
+    let headers: HttpHeaders = new HttpHeaders({Authorization: `Bearer ${access_token}`});
+    return this._http.get(this.url+'/terms/'+tipo,{headers: headers});
+  }
+
   getTermino(id): Observable<any>{
     const access_token = localStorage.getItem('access_token');
     let headers: HttpHeaders = new HttpHeaders({Authorization: `Bearer ${access_token}`});

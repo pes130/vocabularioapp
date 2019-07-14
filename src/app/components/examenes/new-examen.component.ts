@@ -16,6 +16,8 @@ export class NewExamenComponent implements OnInit {
     titulo: string;
     termsMap: Map<number, Termino>;
     examen: Examen;
+    tipo_seleccionado: boolean;
+    tipos: string[];
 
     constructor(
         private _terminos_service: TerminosService,
@@ -27,10 +29,27 @@ export class NewExamenComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.getTerminos();
+        //this.getTerminos();
+        this.getTipos();
     }
 
+    seleccionar_tipo(tipo) {
+        console.log(tipo);
+        if (tipo ==="*") {
+            this.getTerminos();
+        } else {
+            this.getTerminosPorTipo(tipo);
+        }
+    }
 
+    private getTipos() {
+        this._terminos_service.getTipos().subscribe(result => {
+            this.tipos = result.tipos;
+        }, error => {
+            console.log("Error!!");
+            console.log(error);
+        })
+    }
 
 
     private getTerminos() {
@@ -53,6 +72,39 @@ export class NewExamenComponent implements OnInit {
             //randomize
             items.sort(() => Math.random() - 0.5);
 
+            // split de las 100 primeras preguntas
+            items = items.slice(0, 50);
+
+            this.examen = new Examen(dateString, 0, 0, items);
+        }, error => {
+            if (error.status == 401) {
+                console.log(<any>error);
+            } else {
+                //this.alertService.error("Error desconocido");
+                console.log(<any>error);
+            }
+        });
+    }
+
+    private getTerminosPorTipo(tipo) {
+        this._terminos_service.getTerminosByTipo(tipo).subscribe(result => {
+            this.termsMap = this.create_dict_of_terms(result.terminos);
+            let m = new Date();
+            let dateString = + m.getUTCDate() +
+                "/" + (m.getUTCMonth() + 1) +
+                "/" + m.getUTCFullYear() +
+                " " +
+                m.getHours() + ":" +
+                m.getMinutes() + ":" +
+                m.getSeconds();
+            let items: Item[] = [];
+            result.terminos.forEach((termino => {
+                let item = new Item(termino.id, 0, false);
+                items.push(item);
+            }));
+
+            //randomize
+            items.sort(() => Math.random() - 0.5);
             this.examen = new Examen(dateString, 0, 0, items);
         }, error => {
             if (error.status == 401) {

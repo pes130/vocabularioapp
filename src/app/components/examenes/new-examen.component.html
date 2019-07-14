@@ -1,13 +1,26 @@
 <h1>{{titulo}}</h1>
 <hr/>
 
+
+<div *ngIf="!tipos" class="row">
+    <p>Cargando tipos ...</p>
+</div>
+<div *ngIf="tipos" class="row">
+    <div class="table-responsive col-lg-6">
+        <select class="form-control" id="exampleFormControlSelect1" (change)="seleccionar_tipo($event.target.value)">
+            <option value="*">Cualquiera</option>
+            <option *ngFor="let tipo of tipos" value="{{tipo}}">{{tipo}}</option>
+        </select>
+    </div>
+</div>
+
+
 <div *ngIf="!examen">
-    Cargando examen ...
+    <p>Seleccione la temática del examen ...</p>
 </div>
 
 <div *ngIf="examen" class="row">
-
-    <div>
+    <div>      
         <ul class="list-group">
             <li class="list-group-item"><strong>Fecha de inicio: </strong>{{examen.fecha}}</li>
             <li class="list-group-item"><strong>Aciertos: </strong>{{examen.aciertos}}</li>
