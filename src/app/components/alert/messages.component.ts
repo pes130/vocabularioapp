@@ -16,8 +16,6 @@ export class MessagesComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this._message_service.getAlert().subscribe(message => {
-      console.log("Uea, un mensjae");
-      console.log(message);
       if(message!=undefined && message.type == 'success'){
         message.cssClass = 'alert alert-success alert-dismissible show';
       } else if (message!=undefined && message.type == 'error') {

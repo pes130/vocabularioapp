@@ -45,6 +45,8 @@ export class HttpErrorInterceptor implements HttpInterceptor {
           } else {
             return next.handle(req).pipe(
               catchError((error, caught) => {
+                console.log("Error interceptado: ");
+                console.log(error);
                 if (error instanceof HttpErrorResponse) {
                   if (this._checkTokenExpiryErr(error)) {
                     return this._ifTokenExpired().pipe(
