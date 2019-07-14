@@ -25,7 +25,7 @@ export class NewExamenComponent implements OnInit {
         private _router: Router
     ) {
         this.titulo = "Nuevo Examen";
-
+        this.tipo_seleccionado = false;
     }
 
     ngOnInit() {
@@ -76,6 +76,7 @@ export class NewExamenComponent implements OnInit {
             items = items.slice(0, 50);
 
             this.examen = new Examen(dateString, 0, 0, items);
+            this.tipo_seleccionado = true;
         }, error => {
             if (error.status == 401) {
                 console.log(<any>error);
@@ -106,6 +107,7 @@ export class NewExamenComponent implements OnInit {
             //randomize
             items.sort(() => Math.random() - 0.5);
             this.examen = new Examen(dateString, 0, 0, items);
+            this.tipo_seleccionado = true;
         }, error => {
             if (error.status == 401) {
                 console.log(<any>error);

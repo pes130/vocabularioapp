@@ -5,7 +5,7 @@
 <div *ngIf="!tipos" class="row">
     <p>Cargando tipos ...</p>
 </div>
-<div *ngIf="tipos" class="row">
+<div *ngIf="tipos && !tipo_seleccionado" class="row">
     <div class="table-responsive col-lg-6">
         <select class="form-control" id="exampleFormControlSelect1" (change)="seleccionar_tipo($event.target.value)">
             <option value="*">Cualquiera</option>
