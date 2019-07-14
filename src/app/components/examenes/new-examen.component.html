@@ -8,6 +8,7 @@
 <div *ngIf="tipos && !tipo_seleccionado" class="row">
     <div class="table-responsive col-lg-6">
         <select class="form-control" id="exampleFormControlSelect1" (change)="seleccionar_tipo($event.target.value)">
+            <option selected disabled>Seleccione la temática del examen ...</option>
             <option value="*">Cualquiera</option>
             <option *ngFor="let tipo of tipos" value="{{tipo}}">{{tipo}}</option>
         </select>
@@ -15,8 +16,8 @@
 </div>
 
 
-<div *ngIf="!examen">
-    <p>Seleccione la temática del examen ...</p>
+<div *ngIf="!examen && tipo_seleccionado">
+    <p>Cargando examen ...</p>
 </div>
 
 <div *ngIf="examen" class="row">
