@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Termino } from '../../models/termino';
 import { TerminosService } from '../../services/terminos.service';
-import { AlertService } from '../../services/alert.service';
 import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 import { Router } from '@angular/router';
 

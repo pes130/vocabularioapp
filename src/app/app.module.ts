@@ -12,13 +12,13 @@ import { AuthService } from './services/auth.service';
 import { AlertService } from './services/alert.service';
 import { TerminosService } from './services/terminos.service';
 import { ExamenesService } from './services/examenes.service';
+import { MessagesService } from './services/messages.services';
 
 import { AuthGuard } from './_helpers/auth.guard';
 import { LoginRedirectGuard } from './_helpers/login-redirect.guard';
 
 import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
-import { AlertComponent } from './components/alert/alert.component';
 import { TerminosListComponent } from './components/terminos/terminos-list.component';
 import { TerminoAddComponent } from './components/terminos/termino-add.component';
 import { TerminoDetailComponent } from './components/terminos/termino-detail.component';
@@ -28,6 +28,8 @@ import { ExamenesListComponent } from './components/examenes/examenes-list.compo
 import { ExamenDetailComponent } from './components/examenes/examen-detail.component';
 import { ResultadosComponent } from './components/examenes/resultados.component';
 import { ErrorComponent } from './components/error/error.component';
+import { MessagesComponent } from './components/alert/messages.component';
+
 import { HttpErrorInterceptor } from './_helpers/http.error.interceptor';
 
 @NgModule({
@@ -35,7 +37,6 @@ import { HttpErrorInterceptor } from './_helpers/http.error.interceptor';
     AppComponent,
     LoginComponent,
     HomeComponent,
-    AlertComponent,
     TerminosListComponent,
     TerminoAddComponent,
     TerminoDetailComponent,
@@ -44,7 +45,8 @@ import { HttpErrorInterceptor } from './_helpers/http.error.interceptor';
     ExamenesListComponent,
     ExamenDetailComponent,
     ResultadosComponent,
-    ErrorComponent
+    ErrorComponent,
+    MessagesComponent
   ],
   imports: [
     BrowserModule,
@@ -60,6 +62,7 @@ import { HttpErrorInterceptor } from './_helpers/http.error.interceptor';
     AuthGuard,
     LoginRedirectGuard,
     TerminosService,
+    MessagesService,
     ExamenesService,
     {
       provide: HTTP_INTERCEPTORS,

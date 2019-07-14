@@ -1,0 +1,6 @@
+<div *ngIf="message" id="panel-mensajes" class="{{message.cssClass}}" role="alert">
+    {{message.message}}
+    <button type="button" class="close" aria-label="Close" (click)="limpiar()">
+      <span>&times;</span>
+    </button>
+</div>

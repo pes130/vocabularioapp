@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
-import { AlertService } from '../../services/alert.service';
+import { MessagesService } from '../../services/messages.services';
 import { Router } from '@angular/router';
 import { User } from '../../models/user';
 
@@ -16,7 +16,7 @@ export class LoginComponent {
   constructor(
     private _router: Router,
     private _auth_service: AuthService,
-    private _alert_service: AlertService
+    private _alert_service: MessagesService
   ) { }
 
   onSubmit(): void {

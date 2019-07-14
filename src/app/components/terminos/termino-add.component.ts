@@ -3,7 +3,7 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 
 import { TerminosService } from '../../services/terminos.service';
 import { Termino } from '../../models/termino';
-import { AlertService } from '../../services/alert.service';
+import { MessagesService } from '../../services/messages.services';
 
 @Component({
     selector: 'termino-add',
@@ -17,7 +17,7 @@ export class TerminoAddComponent {
     constructor(
         private _terminosService:TerminosService,
         private _route:ActivatedRoute,
-        private alertService: AlertService,
+        private _messages_service: MessagesService,
         private _router:Router) 
     {
         this.titulo = 'Nuevo Término';
@@ -29,11 +29,11 @@ export class TerminoAddComponent {
         console.log(this.termino_actual);
         this._terminosService.addTermino(this.termino_actual).subscribe(
             response=> {
-                this.alertService.success("Término añadido correctamente", true);
+                this._messages_service.success("Término añadido correctamente", true);
                 this._router.navigateByUrl("/terminos");
             },
             error => {
-                console.log(<any>error);
+                this._messages_service.success(error, true);
             }
         );
     }
