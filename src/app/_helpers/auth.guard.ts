@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
-import { AlertService } from '../services/alert.service';
 
 /**
  * Protector de rutas restringidas ante usuarios no autenticados. 
@@ -15,8 +14,7 @@ import { AlertService } from '../services/alert.service';
 export class AuthGuard implements CanActivate {
     constructor(
         private _auth_service:AuthService,
-        private router: Router,
-        private _alert_service: AlertService
+        private router: Router
     ) {
 
     }
@@ -27,7 +25,6 @@ export class AuthGuard implements CanActivate {
             return true;
         } else {
             console.log("No estás autenticado");
-            //this._alert_service.success("No estás autenticado", true);
             this.router.navigateByUrl('/login');
             return false;
         }

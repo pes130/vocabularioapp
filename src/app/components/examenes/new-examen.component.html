@@ -53,6 +53,7 @@
                     <button type="buttton" *ngIf="!item.mostrada" (click)="mostrar(i)" class="btn btn-primary btn-sm">Mostrar</button>
                     <button type="buttton" data-toggle="button" *ngIf="item.mostrada && (!item.contestada || item.acierto)" (click)="marcar(i, true)" class="btn btn-success btn-sm" ng-disabled="item.contestada">OK</button>
                     <button type="buttton" data-toggle="button" *ngIf="item.mostrada && (!item.contestada || !item.acierto)" (click)="marcar(i, false)" class="btn btn-danger btn-sm" ng-disabled="item.contestada">KO</button>
+                    <button type="buttton" data-toggle="button" *ngIf="item.mostrada &&  termsMap.get(item.termino_id).ejemplo" (click)="cargarEjemplo(item.termino_id)" class="btn btn-info btn-sm">Ej</button>
                 </td>
             </tr>
             

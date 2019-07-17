@@ -5,6 +5,7 @@ import { Termino } from '../../models/termino';
 import { Examen } from '../../models/examen';
 import { Item } from '../../models/Item';
 import { Router } from '@angular/router';
+import { PopupService } from '../../services/popup.services';
 
 @Component({
     selector: 'new-examen',
@@ -22,7 +23,8 @@ export class NewExamenComponent implements OnInit {
     constructor(
         private _terminos_service: TerminosService,
         private _examenes_service: ExamenesService,
-        private _router: Router
+        private _router: Router,
+        private _popupservice: PopupService
     ) {
         this.titulo = "Nuevo Examen";
         this.tipo_seleccionado = false;
@@ -140,6 +142,11 @@ export class NewExamenComponent implements OnInit {
 
     mostrar(item_index: number) {
         this.examen.items[item_index].mostrada = true;
+    }
+
+    cargarEjemplo(id_termino: number) {    
+        let termino:Termino = this.termsMap.get(id_termino);
+        this._popupservice.info(termino.ejemplo);
     }
 
     calificarExamen() {

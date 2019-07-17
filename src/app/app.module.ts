@@ -4,15 +4,16 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { MaterialModule} from "./material.module";
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { PopupModule } from 'ng2-opd-popup';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { AuthService } from './services/auth.service';
-import { AlertService } from './services/alert.service';
 import { TerminosService } from './services/terminos.service';
 import { ExamenesService } from './services/examenes.service';
 import { MessagesService } from './services/messages.services';
+import { PopupService } from './services/popup.services';
 
 import { AuthGuard } from './_helpers/auth.guard';
 import { LoginRedirectGuard } from './_helpers/login-redirect.guard';
@@ -54,16 +55,17 @@ import { HttpErrorInterceptor } from './_helpers/http.error.interceptor';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    MaterialModule
+    MaterialModule,
+    PopupModule.forRoot()
   ],
   providers: [
     AuthService,
-    AlertService,
     AuthGuard,
     LoginRedirectGuard,
     TerminosService,
     MessagesService,
     ExamenesService,
+    PopupService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: HttpErrorInterceptor,

@@ -36,7 +36,13 @@
             </div><!--/.nav-collapse -->
           </div><!--/.container-fluid -->
         </nav>
+
         <panel-mensajes></panel-mensajes>
         <router-outlet></router-outlet>
     </div> <!-- /container -->
+
+    <popup (confirmClick)="clickCerrarEnPopup()">
+        <pre *ngIf="message">{{message.message}}</pre>     
+    </popup>
+    
   
